@@ -1,4 +1,4 @@
-# syngo - NEWS <!-- omit in toc -->
+# syngo - News <!-- omit in toc -->
 
 T.B.C.
 

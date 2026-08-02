@@ -1,4 +1,4 @@
-# syngo Examples
+# syngo - Examples <!-- omit in toc -->
 
 | Name | Source & Description | Summary |
 | ---- | -------------------- | ------- |
