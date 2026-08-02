@@ -16,6 +16,7 @@
 *~
 *.[568vq]
 *.a
+*.dll
 *.dylib
 *.exe
 *.lib
