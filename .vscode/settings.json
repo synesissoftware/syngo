@@ -23,13 +23,13 @@
 	],
 	"go.formatTool": "goimports",
 	"go.lintFlags": [
-		"--fast"
+		"--fast",
 	],
 	"go.lintOnSave": "workspace",
 	"go.lintTool": "golangci-lint",
 	"go.useLanguageServer": true,
 	"gopls": {
+		"ui.completion.usePlaceholders": true,
 		"ui.semanticTokens": true,
-		"ui.completion.usePlaceholders": true
 	},
 }
