@@ -2,7 +2,8 @@
 
 ScriptPath=$0
 Dir=$(cd $(dirname "$ScriptPath"); pwd)
-
+ProjectNameFile="$Dir/.sis/project_name.txt"
+ProjectName=$(tr -d '[:space:]' < "$ProjectNameFile")
 
 ListOnly=0
 Verbosity=${XTESTS_VERBOSITY:-${TEST_VERBOSITY:-3}}
@@ -25,10 +26,9 @@ while [[ $# -gt 0 ]]; do
       ;;
     --help)
 
+      [ -f "$Dir/.sis/script_info_lines.txt" ] && cat "$Dir/.sis/script_info_lines.txt"
       cat << EOF
-syngo provides special-purpose synchronisation types
-Copyright (c) 2019-2025, Matthew Wilson and Synesis Information Systems
-Runs all (matching) component and unit test programs
+Runs all (matching) component and unit test packages
 
 $ScriptPath [ ... flags/options ... ]
 
@@ -38,7 +38,7 @@ Flags/options:
 
     -l
     --list-only
-        lists the target programs but does not execute them
+        lists the target packages but does not execute them
 
     --verbosity <verbosity>
         specifies an explicit verbosity for the unit-test(s)
@@ -68,36 +68,39 @@ done
 # ##########################################################
 # main()
 
+cd "$Dir" || exit 1
 
-for f in $(find $Dir -type f -name '*_test.go')
-do
+# Only packages that contain tests (avoids broken multi-main examples/ dirs)
+Packages=$(go list -f '{{if or .TestGoFiles .XTestGoFiles}}{{.ImportPath}}{{end}}' ./...)
 
-    if [ $ListOnly -ne 0 ]; then
+if [ -z "$Packages" ]; then
 
-      echo "would execute $f:"
+  echo "${ScriptPath}: no test packages found for ${ProjectName}"
 
-      continue
-    fi
+  exit 0
+fi
 
-    if [ $Verbosity -ge 3 ]; then
+if [ $ListOnly -ne 0 ]; then
 
-      echo
-    fi
-    if [ $Verbosity -ge 2 ]; then
+  echo "Listing all ${ProjectName} test packages"
 
-      echo "executing $f:"
-    fi
+  printf '%s\n' $Packages
 
-    if [ $Verbosity -ge 2 ]; then
+  exit 0
+fi
 
-		go test -v "$f"
-	else
+if [ $Verbosity -ge 2 ]; then
 
-		go test  "$f"
-    fi
+  echo "Running all ${ProjectName} unit-test packages"
+fi
 
-done
+if [ $Verbosity -ge 2 ]; then
+
+  go test -v $Packages
+else
+
+  go test $Packages
+fi
 
 
 # ############################## end of file ############################# #
-
