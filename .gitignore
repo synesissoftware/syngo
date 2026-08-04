@@ -1,3 +1,6 @@
+# Synesis Information Systems .gitignore for Go libraries
+
+
 # directories (by name)
 
 /scratch/
@@ -16,6 +19,7 @@
 *~
 *.[568vq]
 *.a
+*.dll
 *.dylib
 *.exe
 *.lib
@@ -27,4 +31,3 @@
 *.test
 *.tmp
 *.zip
-

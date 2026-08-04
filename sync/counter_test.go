@@ -106,13 +106,15 @@ func Test_DownCounter(t *testing.T) {
 
 		for i := 0; i != numGoroutines; i++ {
 
-			wg.Go(func() {
+			wg.Add(1)
+			go func() {
+				defer wg.Done()
 
 				for j := 0; j != numLoads; j++ {
 
 					_ = counter.Step()
 				}
-			})
+			}()
 		}
 
 		wg.Wait()
@@ -208,13 +210,15 @@ func Test_UpCounter(t *testing.T) {
 
 		for i := 0; i != numGoroutines; i++ {
 
-			wg.Go(func() {
+			wg.Add(1)
+			go func() {
+				defer wg.Done()
 
 				for j := 0; j != numLoads; j++ {
 
 					_ = counter.Step()
 				}
-			})
+			}()
 		}
 
 		wg.Wait()

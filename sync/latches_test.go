@@ -80,7 +80,9 @@ func Test_BoolLatch(t *testing.T) {
 		falseReads := make([]int64, numGoroutines)
 		trueReads := make([]int64, numGoroutines)
 
-		wg.Go(func() {
+		wg.Add(1)
+		go func() {
+			defer wg.Done()
 
 			for {
 				runtime.Gosched()
@@ -93,11 +95,13 @@ func Test_BoolLatch(t *testing.T) {
 					return
 				}
 			}
-		})
+		}()
 
 		for i := 0; i != numGoroutines; i++ {
 
-			wg.Go(func() {
+			wg.Add(1)
+			go func(i int) {
+				defer wg.Done()
 
 				for j := 0; j != numLoads; j++ {
 
@@ -115,7 +119,7 @@ func Test_BoolLatch(t *testing.T) {
 						permitSet.Store(true)
 					}
 				}
-			})
+			}(i)
 		}
 
 		wg.Wait()

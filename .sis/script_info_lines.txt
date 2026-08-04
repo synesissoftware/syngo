@@ -1,0 +1,2 @@
+syngo provides special-purpose synchronisation types
+Copyright (c) 2019-2026, Matthew Wilson and Synesis Information Systems
