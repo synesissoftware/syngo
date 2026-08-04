@@ -15,7 +15,7 @@ recls for Go
 
 ## Performance improvements
 
-T.B.C.
+\<none>
 
 
 <!-- ########################### end of file ########################### -->
