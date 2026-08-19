@@ -3,7 +3,7 @@
 
 #
 # Created: 18th August 2025
-# Updated: 3rd August 2026
+# Updated: 19th August 2026
 #
 
 name: Go
@@ -14,10 +14,10 @@ env:
 on:
   push:
     branches:
-    - boilerplate
-    - dev
-    - idiomatic
     - master
+    - dev
+    - boilerplate
+    - idiomatic
     - rc1
     - rc2
     - rc3
