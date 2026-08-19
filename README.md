@@ -7,7 +7,6 @@
 [![GitHub release](https://img.shields.io/github/v/release/synesissoftware/syngo.svg)](https://github.com/synesissoftware/syngo/releases/latest)
 [![Last Commit](https://img.shields.io/github/last-commit/synesissoftware/syngo)](https://github.com/synesissoftware/syngo/commits/master)
 [![Go](https://github.com/synesissoftware/syngo/actions/workflows/go.yml/badge.svg)](https://github.com/synesissoftware/syngo/actions/workflows/go.yml)
-[![Go Report Card](https://goreportcard.com/badge/github.com/synesissoftware/syngo)](https://goreportcard.com/report/github.com/synesissoftware/syngo)
 [![Go Reference](https://pkg.go.dev/badge/github.com/synesissoftware/syngo.svg)](https://pkg.go.dev/github.com/synesissoftware/syngo)
 
 
