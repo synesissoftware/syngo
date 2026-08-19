@@ -1,4 +1,10 @@
-# syngo - CHANGES <!-- omit in toc -->
+# syngo - Changes <!-- omit in toc -->
+
+## 0.2.1 - 23rd August 2026
+
+* CI modernisation (matrix + lint);
+* boilerplate additions (scripts, markdown docs, project identity);
+* version string updated for the 0.0.0-alpha2 release;
 
 
 ## 0.2.0 - 4th August 2026

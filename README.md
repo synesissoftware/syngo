@@ -11,19 +11,6 @@
 [![Go Reference](https://pkg.go.dev/badge/github.com/synesissoftware/syngo.svg)](https://pkg.go.dev/github.com/synesissoftware/syngo)
 
 
-## Introduction
-
-**syngo** provides special-purpose synchronisation types for **Go**: one-way latches and counters that are safe for concurrent use by multiple goroutines.
-
-Unlike the broad primitives in the standard library `sync` package (mutexes, condition variables, wait groups, and so on), the types in **syngo** are unidirectional — once a latch has flipped, it stays flipped — and are intended for simple, low-overhead signalling and counting patterns.
-
-The primary API lives in the `sync` subpackage:
-
-```Go
-import syngo_sync "github.com/synesissoftware/syngo/sync"
-```
-
-
 ## Table of Contents <!-- omit in toc -->
 
 - [Introduction](#introduction)
@@ -40,6 +27,13 @@ import syngo_sync "github.com/synesissoftware/syngo/sync"
     - [Development/Testing Dependencies](#developmenttesting-dependencies)
   - [Related projects](#related-projects)
   - [License](#license)
+
+
+## Introduction
+
+**syngo** provides special-purpose synchronisation types for **Go** — one-way latches and counters that may be operated safely from multiple concurrent goroutines.
+
+Unlike the broad primitives in the standard library `sync` package (mutexes, condition variables, wait groups, and so on), the types in **syngo** are unidirectional — once a latch has flipped, it stays flipped — and are intended for simple, low-overhead signalling and counting patterns.
 
 
 ## Installation
@@ -169,6 +163,8 @@ Defect reports, feature requests, and pull requests are welcome on https://githu
 
 
 ### Related projects
+
+**syngo** is a **Go**-only library; there are no sibling implementations in other languages at this time.
 
 Other Synesis **Go** libraries include:
 

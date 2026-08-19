@@ -4,7 +4,7 @@
 
 /*
  * Created: 14th March 2019
- * Updated: 4th August 2026
+ * Updated: 19th August 2026
  */
 
 package syngo
@@ -14,7 +14,7 @@ import "github.com/synesissoftware/ver2go"
 const (
 	VersionMajor uint16 = 0
 	VersionMinor uint16 = 2
-	VersionPatch uint16 = 0
+	VersionPatch uint16 = 1
 	VersionAB    uint16 = 0xFFFF
 	Version      uint64 = (uint64(VersionMajor) << 48) + (uint64(VersionMinor) << 32) + (uint64(VersionPatch) << 16) + (uint64(VersionAB) << 0)
 )
