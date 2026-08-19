@@ -94,12 +94,24 @@ if [ $Verbosity -ge 2 ]; then
   echo "Running all ${ProjectName} unit-test packages"
 fi
 
+#
+# Mitigate rare macOS `dyld` aborts caused by corrupted cached `*.test` binaries.
+#
+go clean -cache -testcache
+
+LD_FLAGS=""
+if [ "$(uname -s)" = "Darwin" ]; then
+  # Older Go toolchains can produce Mach-O binaries without LC_UUID on newer macOS
+  # versions, triggering `dyld: missing LC_UUID load command ...` at test start.
+  LD_FLAGS="-ldflags=-linkmode=external"
+fi
+
 if [ $Verbosity -ge 2 ]; then
 
-  go test -v $Packages
+  go test -v $LD_FLAGS $Packages
 else
 
-  go test $Packages
+  go test $LD_FLAGS $Packages
 fi
 
 

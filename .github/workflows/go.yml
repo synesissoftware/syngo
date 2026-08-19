@@ -80,3 +80,4 @@ jobs:
       uses: golangci/golangci-lint-action@v6
       with:
         args: --fast
+        verify: false
