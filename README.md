@@ -11,11 +11,6 @@
 [![Go Reference](https://pkg.go.dev/badge/github.com/synesissoftware/syngo.svg)](https://pkg.go.dev/github.com/synesissoftware/syngo)
 
 
-## Introduction
-
-T.B.C.
-
-
 ## Table of Contents <!-- omit in toc -->
 
 - [Introduction](#introduction)
@@ -29,6 +24,11 @@ T.B.C.
 		- [Development/Testing Dependencies](#developmenttesting-dependencies)
 	- [Related projects](#related-projects)
 	- [License](#license)
+
+
+## Introduction
+
+T.B.C.
 
 
 ## Installation
