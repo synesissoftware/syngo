@@ -1,10 +1,10 @@
 module github.com/synesissoftware/syngo
 
-go 1.23.6
+go 1.21
 
 require (
 	github.com/stretchr/testify v1.11.1
-	github.com/synesissoftware/ver2go v0.1.2
+	github.com/synesissoftware/ver2go v0.1.3
 )
 
 require (
