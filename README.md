@@ -28,7 +28,7 @@
 
 ## Introduction
 
-T.B.C.
+**syngo** provides special-purpose synchronisation types for **Go** — one-way latches and counters that may be operated safely from multiple concurrent goroutines.
 
 
 ## Installation
@@ -40,7 +40,13 @@ import syngo "github.com/synesissoftware/syngo"
 
 ## Components
 
-T.B.C.
+Types are provided in the **`sync`** sub-package (`github.com/synesissoftware/syngo/sync`):
+
+* **`BoolLatch`** — a one-way boolean latch (`Set()`, `Load()`);
+* **`DownLatch`** / **`UpLatch`** — numeric latches that count down or up to a threshold (`Step()`, `Load()`);
+* **`DownCounter`** / **`UpCounter`** — unidirectional counters (`Step()`, `Load()`).
+
+See [EXAMPLES.md](./EXAMPLES.md) for worked examples.
 
 
 ## Examples
@@ -74,7 +80,7 @@ Defect reports, feature requests, and pull requests are welcome on https://githu
 
 ### Related projects
 
-T.B.C.
+**syngo** is a **Go**-only library; there are no sibling implementations in other languages at this time.
 
 
 ### License
