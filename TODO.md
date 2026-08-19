@@ -1,22 +1,26 @@
 # syngo - TODO <!-- omit in toc -->
 
-recls for Go
 
-## Table of contents <!-- omit in toc -->
+## Table of Contents <!-- omit in toc -->
 
 - [Functional improvements](#functional-improvements)
 - [Performance improvements](#performance-improvements)
+- [Packaging improvements](#packaging-improvements)
 
 
 ## Functional improvements
 
-* latches to take a lockable that is called only once when latching
+* [ ] latches to take a lockable that is called only once when latching;
 
 
 ## Performance improvements
 
-T.B.C.
+* \<none>
+
+
+## Packaging improvements
+
+* \<none>
 
 
 <!-- ########################### end of file ########################### -->
-
