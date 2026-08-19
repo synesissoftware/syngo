@@ -1,6 +1,6 @@
 # syngo - Changes <!-- omit in toc -->
 
-## 0.0.0-alpha2 - 23rd August 2026
+## 0.1.0 - 23rd August 2026
 
 * CI modernisation (matrix + lint);
 * boilerplate additions (scripts, markdown docs, project identity);
