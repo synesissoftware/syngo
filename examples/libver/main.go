@@ -1,10 +1,10 @@
 package main
 
 import (
-	"fmt"
-
 	syngo "github.com/synesissoftware/syngo"
 	ver2go "github.com/synesissoftware/ver2go"
+
+	"fmt"
 )
 
 func main() {

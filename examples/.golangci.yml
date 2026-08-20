@@ -8,7 +8,6 @@ linters-settings:
     no-inline-comments: false
     no-prefix-comments: false
     sections:
-      - prefix(github.com/synesissoftware/syngo)
       - default
       - standard
 
