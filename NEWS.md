@@ -3,6 +3,7 @@
 
 | Date              | News Item                                                                                             |
 | ----------------- | ----------------------------------------------------------------------------------------------------- |
+| 20th August 2026  | Release of [**syngo** 0.3.1](https://github.com/synesissoftware/syngo/releases/tag/0.3.1)              |
 | 20th August 2026  | Release of [**syngo** 0.3.0](https://github.com/synesissoftware/syngo/releases/tag/0.3.0)              |
 | 20th August 2026  | Release of [**syngo** 0.2.1](https://github.com/synesissoftware/syngo/releases/tag/0.2.1)              |
 | 4th August 2026   | Release of [**syngo** 0.2.0](https://github.com/synesissoftware/syngo/releases/tag/0.2.0)              |

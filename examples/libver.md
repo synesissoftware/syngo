@@ -8,7 +8,7 @@ Displays the **syngo** library version and terminates.
 
 ## Source
 
-See [examples/libver/main.go](./examples/libver/main.go).
+See [examples/libver/main.go](./libver/main.go).
 
 
 ## Execution

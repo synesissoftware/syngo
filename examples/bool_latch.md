@@ -8,7 +8,7 @@ Illustrates use of the `BoolLatch` type.
 
 ## Source
 
-See [examples/bool_latch/main.go](./examples/bool_latch/main.go).
+See [examples/bool_latch/main.go](./bool_latch/main.go).
 
 
 ## Execution
