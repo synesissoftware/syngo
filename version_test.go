@@ -1,8 +1,9 @@
 package syngo_test
 
 import (
-	"github.com/stretchr/testify/require"
 	"github.com/synesissoftware/syngo"
+
+	"github.com/stretchr/testify/require"
 
 	"testing"
 )
