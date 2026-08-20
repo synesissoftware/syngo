@@ -125,9 +125,9 @@ const (
   VersionMinor uint16 = /* ... */
   VersionPatch uint16 = /* ... */
   VersionAB    uint16 = /* ... */
-  Version      uint64 = /* ... */
 )
 
+func Version() uint64
 func VersionString() string
 ```
 
