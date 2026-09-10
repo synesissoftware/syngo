@@ -10,18 +10,19 @@
 
 ## Functional improvements
 
+* [ ] atomic high-watermark;
 * [ ] latches to take a lockable that is called only once when latching;
 
 
 ## Performance improvements
 
-* \<none>
+* \<none>;
 
 
 ## Packaging improvements
 
-* [ ] Before the next official release: confirm **`go.mod`** (`go 1.23`) and the CI Go-version matrix, bump Synesis `require`s to newly published tags, then run **`go mod tidy`** (not against currently published tags). Prior Synesis Go releases, in order:
-  * **ver2go**;
+* [x] ~~~Before the next official release: confirm **`go.mod`** (`go 1.23`) and the CI Go-version matrix, bump Synesis `require`s to newly published tags, then run **`go mod tidy`** (not against currently published tags). Prior Synesis Go releases, in order:~~~ - ✅:
+  * [x] ~~~**ver2go**~~~ - ✅;
 
 
 <!-- ########################### end of file ########################### -->
