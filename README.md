@@ -177,10 +177,13 @@ Defect reports, feature requests, and pull requests are welcome on https://githu
 Other Synesis **Go** libraries include:
 
 * [**ANGoLS**](https://github.com/synesissoftware/ANGoLS/);
+* [**CLASP.Go**](https://github.com/synesissoftware/CLASP.Go/);
 * [**CLiC4.Go**](https://github.com/synesissoftware/CLiC4.Go/);
 * [**Diagnosticism.Go**](https://github.com/synesissoftware/Diagnosticism.Go/);
+* [**libCLImate.Go**](https://github.com/synesissoftware/libCLImate.Go/);
 * [**STEGoL**](https://github.com/synesissoftware/STEGoL/);
 * [**ver2go**](https://github.com/synesissoftware/ver2go/);
+* [**woad.Go**](https://github.com/synesissoftware/woad.Go/);
 
 
 ### License
