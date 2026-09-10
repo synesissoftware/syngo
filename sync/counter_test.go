@@ -6,7 +6,9 @@ import (
 	"github.com/stretchr/testify/assert"
 	"github.com/stretchr/testify/require"
 
+	"runtime"
 	"sync"
+	"sync/atomic"
 	"testing"
 )
 
@@ -121,6 +123,93 @@ func Test_DownCounter(t *testing.T) {
 
 		require.Equal(t, -totalLoadCount, counter.Load())
 	})
+
+	t.Run("concurrent Step() return values are unique", func(t *testing.T) {
+
+		const numGoroutines = 16
+		const stepsPerGoroutine = 2_000
+		const totalSteps = numGoroutines * stepsPerGoroutine
+
+		counter := NewDownCounter(0)
+
+		results := make([]int64, totalSteps)
+		var wg sync.WaitGroup
+		var next atomic.Int64
+
+		for i := 0; i != numGoroutines; i++ {
+
+			wg.Add(1)
+			go func() {
+				defer wg.Done()
+
+				for j := 0; j != stepsPerGoroutine; j++ {
+
+					got := counter.Step()
+					slot := next.Add(1) - 1
+					results[slot] = got
+				}
+			}()
+		}
+
+		wg.Wait()
+
+		require.Equal(t, int64(totalSteps), next.Load())
+		require.Equal(t, int64(-totalSteps), counter.Load())
+
+		seen := make(map[int64]struct{}, totalSteps)
+		for _, v := range results {
+			_, exists := seen[v]
+			require.False(t, exists, "duplicate Step() return %d", v)
+			seen[v] = struct{}{}
+		}
+
+		require.Equal(t, totalSteps, len(seen))
+	})
+
+	t.Run("concurrent Load() interleaved with Step()", func(t *testing.T) {
+
+		const numSteppers = 8
+		const numLoaders = 8
+		const stepsPerStepper = 5_000
+		const totalSteps = numSteppers * stepsPerStepper
+
+		counter := NewDownCounter(0)
+
+		var steppersWG sync.WaitGroup
+		var loadersWG sync.WaitGroup
+		var steppersDone atomic.Bool
+
+		for i := 0; i != numSteppers; i++ {
+
+			steppersWG.Add(1)
+			go func() {
+				defer steppersWG.Done()
+
+				for j := 0; j != stepsPerStepper; j++ {
+					_ = counter.Step()
+				}
+			}()
+		}
+
+		for i := 0; i != numLoaders; i++ {
+
+			loadersWG.Add(1)
+			go func() {
+				defer loadersWG.Done()
+
+				for !steppersDone.Load() {
+					_ = counter.Load()
+					runtime.Gosched()
+				}
+			}()
+		}
+
+		steppersWG.Wait()
+		steppersDone.Store(true)
+		loadersWG.Wait()
+
+		require.Equal(t, int64(-totalSteps), counter.Load())
+	})
 }
 
 func Test_UpCounter(t *testing.T) {
@@ -224,5 +313,97 @@ func Test_UpCounter(t *testing.T) {
 		wg.Wait()
 
 		require.Equal(t, totalLoadCount, counter.Load())
+	})
+
+	t.Run("concurrent Step() return values are unique", func(t *testing.T) {
+
+		const numGoroutines = 16
+		const stepsPerGoroutine = 2_000
+		const totalSteps = numGoroutines * stepsPerGoroutine
+
+		counter := NewUpCounter(0)
+
+		results := make([]int64, totalSteps)
+		var wg sync.WaitGroup
+		var next atomic.Int64
+
+		for i := 0; i != numGoroutines; i++ {
+
+			wg.Add(1)
+			go func() {
+				defer wg.Done()
+
+				for j := 0; j != stepsPerGoroutine; j++ {
+
+					got := counter.Step()
+					slot := next.Add(1) - 1
+					results[slot] = got
+				}
+			}()
+		}
+
+		wg.Wait()
+
+		require.Equal(t, int64(totalSteps), next.Load())
+		require.Equal(t, int64(totalSteps), counter.Load())
+
+		seen := make(map[int64]struct{}, totalSteps)
+		for _, v := range results {
+			_, exists := seen[v]
+			require.False(t, exists, "duplicate Step() return %d", v)
+			seen[v] = struct{}{}
+		}
+
+		require.Equal(t, totalSteps, len(seen))
+
+		for expect := int64(1); expect <= int64(totalSteps); expect++ {
+			_, ok := seen[expect]
+			require.True(t, ok, "missing Step() return %d", expect)
+		}
+	})
+
+	t.Run("concurrent Load() interleaved with Step()", func(t *testing.T) {
+
+		const numSteppers = 8
+		const numLoaders = 8
+		const stepsPerStepper = 5_000
+		const totalSteps = numSteppers * stepsPerStepper
+
+		counter := NewUpCounter(0)
+
+		var steppersWG sync.WaitGroup
+		var loadersWG sync.WaitGroup
+		var steppersDone atomic.Bool
+
+		for i := 0; i != numSteppers; i++ {
+
+			steppersWG.Add(1)
+			go func() {
+				defer steppersWG.Done()
+
+				for j := 0; j != stepsPerStepper; j++ {
+					_ = counter.Step()
+				}
+			}()
+		}
+
+		for i := 0; i != numLoaders; i++ {
+
+			loadersWG.Add(1)
+			go func() {
+				defer loadersWG.Done()
+
+				for !steppersDone.Load() {
+					_ = counter.Load()
+					runtime.Gosched()
+				}
+			}()
+		}
+
+		steppersWG.Wait()
+		steppersDone.Store(true)
+		loadersWG.Wait()
+
+		require.Equal(t, int64(totalSteps), counter.Load())
 	})
 }
