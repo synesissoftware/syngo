@@ -34,7 +34,9 @@
 
 ## 0.2.0-alpha1 - 2nd November 2025
 
-FIRST PUBLIC RELEASE
+* first public release;
+* added `BoolLatch`, `DownLatch`, and `UpLatch` types;
+* added version API and **examples/bool_latch**, **examples/libver**;
 
 
 
