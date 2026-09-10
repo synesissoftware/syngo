@@ -37,9 +37,19 @@ Unlike the broad primitives in the standard library `sync` package (mutexes, con
 
 ## Installation
 
+Install via `go get`, as in:
+
+```bash
+go get "github.com/synesissoftware/syngo"
+```
+
+and then import as:
+
 ```Go
 import syngo "github.com/synesissoftware/syngo"
 ```
+
+or, for the synchronisation types:
 
 ```Go
 import syngo_sync "github.com/synesissoftware/syngo/sync"
@@ -157,8 +167,7 @@ Defect reports, feature requests, and pull requests are welcome on https://githu
 
 #### Development/Testing Dependencies
 
-* [**require**](https://github.com/stretchr/testify/);
-* [**STEGoL**](https://github.com/synesissoftware/STEGoL/);
+* [**testify**](https://github.com/stretchr/testify);
 
 
 ### Related projects
@@ -168,10 +177,13 @@ Defect reports, feature requests, and pull requests are welcome on https://githu
 Other Synesis **Go** libraries include:
 
 * [**ANGoLS**](https://github.com/synesissoftware/ANGoLS/);
+* [**CLASP.Go**](https://github.com/synesissoftware/CLASP.Go/);
 * [**CLiC4.Go**](https://github.com/synesissoftware/CLiC4.Go/);
 * [**Diagnosticism.Go**](https://github.com/synesissoftware/Diagnosticism.Go/);
+* [**libCLImate.Go**](https://github.com/synesissoftware/libCLImate.Go/);
 * [**STEGoL**](https://github.com/synesissoftware/STEGoL/);
 * [**ver2go**](https://github.com/synesissoftware/ver2go/);
+* [**woad.Go**](https://github.com/synesissoftware/woad.Go/);
 
 
 ### License
