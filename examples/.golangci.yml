@@ -1,0 +1,15 @@
+linters:
+  enable:
+    - gci
+
+linters-settings:
+  gci:
+    custom-order: true
+    no-inline-comments: false
+    no-prefix-comments: false
+    sections:
+      - default
+      - standard
+
+run:
+  timeout: 5m
