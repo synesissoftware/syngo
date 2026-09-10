@@ -37,9 +37,19 @@ Unlike the broad primitives in the standard library `sync` package (mutexes, con
 
 ## Installation
 
+Install via `go get`, as in:
+
+```bash
+go get "github.com/synesissoftware/syngo"
+```
+
+and then import as:
+
 ```Go
 import syngo "github.com/synesissoftware/syngo"
 ```
+
+or, for the synchronisation types:
 
 ```Go
 import syngo_sync "github.com/synesissoftware/syngo/sync"
@@ -157,8 +167,7 @@ Defect reports, feature requests, and pull requests are welcome on https://githu
 
 #### Development/Testing Dependencies
 
-* [**require**](https://github.com/stretchr/testify/);
-* [**STEGoL**](https://github.com/synesissoftware/STEGoL/);
+* [**testify**](https://github.com/stretchr/testify);
 
 
 ### Related projects
